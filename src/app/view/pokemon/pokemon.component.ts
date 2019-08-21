@@ -14,6 +14,7 @@ export class PokemonComponent implements OnInit {
   constructor(private httpService: HttpClient) { }
 
   ngOnInit() {
+    this.getAllpkemon();
   }
 
   getAllpkemon() {
@@ -23,8 +24,8 @@ export class PokemonComponent implements OnInit {
         headers:{
           'content-Type': 'application/json',
         }
-      }).subscribe(resInno => {
-      this.arrPoke = resInno ;
+      }).subscribe(data => {
+      this.arrPoke = data ;
       this.loading = false;
     },
       error => {
