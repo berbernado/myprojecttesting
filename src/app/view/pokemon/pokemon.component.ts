@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { UrlCollection } from '../../../config/UrlCollection';
 
 @Component({
   selector: 'app-pokemon',
@@ -6,27 +8,28 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pokemon.component.css']
 })
 export class PokemonComponent implements OnInit {
-
-  constructor() { }
+  
+  public arrPoke: any;
+  loading = false;
+  constructor(private httpService: HttpClient) { }
 
   ngOnInit() {
   }
 
-  getAllInnovation() {
-    this.loadingawal = true;
-    this.httpService.get<any>(this.IPURL + UrlCollection.GETPROGRESINNOVATION + this._myconfig.getNip(),
+  getAllpkemon() {
+    this.loading = true;
+    this.httpService.get<any>(UrlCollection.LISTPOKEMON,
       {
         headers:{
           'content-Type': 'application/json',
-          'Authorization': 'Bearer ' + this._myconfig.getToken()
         }
       }).subscribe(resInno => {
-      this.arrInnovation = resInno ;
-      this.loadingawal = false;
+      this.arrPoke = resInno ;
+      this.loading = false;
     },
       error => {
         if (error.status === '401') {
-          this._myconfig.logoutService();
+          console.log(error);
       }
     });
   }
