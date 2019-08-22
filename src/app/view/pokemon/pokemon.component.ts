@@ -43,7 +43,7 @@ export class PokemonComponent implements OnInit {
           'content-Type': 'application/json',
         }
       }).subscribe(data => {
-        console.log(data);
+        console.log(data.sprites.front_default);
         return data.sprites.front_default;
     },
       error => {
