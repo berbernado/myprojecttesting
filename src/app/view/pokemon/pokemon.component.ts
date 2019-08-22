@@ -10,6 +10,7 @@ import { UrlCollection } from '../../../config/UrlCollection';
 export class PokemonComponent implements OnInit {
   
   public arrPoke: any;
+  loadimg = true;
   loading = false;
   constructor(private httpService: HttpClient) { }
 
@@ -35,4 +36,8 @@ export class PokemonComponent implements OnInit {
     });
   }
 
+  getPokeImages(id){
+    let url = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/1.png";
+    return url;
+  }
 }
