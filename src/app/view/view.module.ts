@@ -6,6 +6,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { ContentComponent } from './content/content.component';
 import { PokemonComponent } from './pokemon/pokemon.component';
+import { GetPhoto} from './tools/pokephoto.pipe';
 import { FilterPipe} from '../../config/filter.pipe';
 
 @NgModule({
@@ -13,7 +14,7 @@ import { FilterPipe} from '../../config/filter.pipe';
     CommonModule,
     FormsModule
   ],
-  declarations: [HeaderComponent, ContentComponent, FooterComponent, PokemonComponent, FilterPipe],
+  declarations: [HeaderComponent, ContentComponent, FooterComponent, PokemonComponent, FilterPipe, GetPhoto],
   exports: [ContentComponent]
 })
 export class ViewModule { }

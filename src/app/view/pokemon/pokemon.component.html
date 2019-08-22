@@ -6,7 +6,7 @@
 <div class="container">
   <div class="row mt-3">
     <div class="input-group col-md-12">
-      <input class="form-control py-2" [(ngModel)]="searchText" placeholder="search">
+      <input class="form-control py-2" [(ngModel)]="searchText" placeholder="Search">
         <span class="input-group-append">
           <button class="btn btn-outline-secondary" type="button">
             <i class="fa fa-search"></i>
@@ -15,13 +15,13 @@
     </div>
   </div>
   <div class="row mt-3">
-    <div class="col-sm-6 col-md-4" *ngFor="let i of listpoke | filter : searchText;let j = index;">
+    <div class="col-sm-6 col-md-4" *ngFor="let i of arrPoke | filter : searchText;let j = index;">
       <div class="card">
           <div class="card-body text-center">
             <p>
-              <img src="{{i.foto}}" alt="card image">
+              <img [src]="j+1 | GetPhoto" alt="card image">
             </p>
-            <h4 class="card-title">{{i.nama}}</h4>
+            <h4 class="card-title">{{i.name}}</h4>
             <p class="card-text">This is basic card with image on top, title, description and button.</p>
             <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
             </div>
