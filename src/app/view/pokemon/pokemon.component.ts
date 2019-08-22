@@ -25,7 +25,7 @@ export class PokemonComponent implements OnInit {
           'content-Type': 'application/json',
         }
       }).subscribe(data => {
-      this.arrPoke = data ;
+      this.arrPoke = data.results ;
       this.loading = false;
     },
       error => {
