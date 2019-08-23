@@ -27,17 +27,12 @@
       <div class="card">
           <div class="card-body text-center">
             <p>
-               <img src="{{i.photo}}" alt="card image" width="200px">
+               <img src="{{i.photo}}" alt="card image" width="100%">
             </p>
             <h4 class="card-title">{{i.name}}</h4>
-            <p class="card-text text-muted"># {{j + 1}}</p>
-            <div *ngFor="let x of i.typepoke">
-              <a href="#" class="btn btn-primary btn-sm" >
-                {{x.type.name}}
-              </a>
-            </div>
-           
-            </div>
+            <p class="card-text text-muted"># {{i.idpoke}}</p>
+            <span *ngFor="let x of i.typepoke" class="{{x.type.name | colortype}}">{{x.type.name}}</span>
+          </div>
         </div>
     </div>
   </div>

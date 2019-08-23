@@ -30,3 +30,41 @@
   margin: auto;
   width: 200px;
 }
+
+.lbltype{
+  margin:auto;
+}
+
+.badge{
+  margin-right: 5px;
+}
+.badge-fight {
+    color: #fff;
+    background-color: #34495e;
+}
+
+.badge-fly {
+    color: #fff;
+    background-color: #bdc3c7;
+}
+
+.badge-poison {
+    color: #fff;
+    background-color: #9b59b6;
+}
+
+.badge-ground {
+    color: #fff;
+    background-color: #ccae62;
+}
+
+
+.badge-bug {
+    color: #fff;
+    background-color: #01a3a4;
+}
+
+.badge-warning {
+    color: #fff;
+    background-color: #f1c40f;
+}

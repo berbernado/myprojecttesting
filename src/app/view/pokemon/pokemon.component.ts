@@ -46,16 +46,21 @@ export class PokemonComponent implements OnInit {
 
   getPokeImages(){ 
     let id = this.page;
+    let dataPoke = [];
     for (const result of this.arrPoke) {
-      this.httpService.get<any>(UrlCollection.LISTPOKEMON + id + '/').subscribe(
+      this.httpService.get<any>(UrlCollection.LISTPOKEMON + (id + 1) + '/').subscribe(
         detilpoke => {
           this.httpService.get<any>(UrlCollection.FORMPOKEMON + detilpoke.id + '/').subscribe(
             data => {
-              this.listpoke.push({idpoke: detilpoke.id,
+              dataPoke.push({idpoke: detilpoke.id,
                 name: detilpoke.name,
                 typepoke: detilpoke.types,
                 photo: data.sprites.front_default,
               });
+              this.listpoke = dataPoke.sort((a, b) => {
+                return a.idpoke - b.idpoke;
+              });
+              //console.log(sortedDescPoints);
             },
               error => {
               console.log(error);
@@ -64,9 +69,9 @@ export class PokemonComponent implements OnInit {
           error => {
           console.log(error);
         });
-      
         id = id + 1;
     }
+
   }
 
   loadmore(): void {
