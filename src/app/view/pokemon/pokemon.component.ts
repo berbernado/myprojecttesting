@@ -11,7 +11,10 @@ export class PokemonComponent implements OnInit {
   
   public arrPoke: [];
   public listpoke = [];
+  public dataPoke = [];
   public geturl: any;
+
+  public nexturl: any;
   public countpoke: any;
   loading = false;
   total = 0;
@@ -25,7 +28,14 @@ export class PokemonComponent implements OnInit {
 
   getAllpkemon() {
     this.loading = true;
-    const url = UrlCollection.LISTPOKEMON + '?offset='+this.page+'&limit='+ this.limit;
+    let url = '';
+    if (this.geturl === undefined || this.geturl === ''){
+      url = UrlCollection.LISTPOKEMON + '?offset='+this.page+'&limit='+ this.limit;
+    } else {
+      url = this.geturl;
+    };
+     
+    console.log(url);
     this.httpService.get<any>( url,
       {
         headers:{
@@ -33,6 +43,7 @@ export class PokemonComponent implements OnInit {
         }
       }).subscribe(data => {
       this.total = data.count;
+      this.nexturl = data.next;
       this.arrPoke = data.results;
       this.getPokeImages();
       this.loading = false;
@@ -46,21 +57,19 @@ export class PokemonComponent implements OnInit {
 
   getPokeImages(){ 
     let id = this.page;
-    let dataPoke = [];
     for (const result of this.arrPoke) {
       this.httpService.get<any>(UrlCollection.LISTPOKEMON + (id + 1) + '/').subscribe(
         detilpoke => {
           this.httpService.get<any>(UrlCollection.FORMPOKEMON + detilpoke.id + '/').subscribe(
             data => {
-              dataPoke.push({idpoke: detilpoke.id,
+              this.dataPoke.push({idpoke: detilpoke.id,
                 name: detilpoke.name,
                 typepoke: detilpoke.types,
                 photo: data.sprites.front_default,
               });
-              this.listpoke = dataPoke.sort((a, b) => {
+              this.listpoke = this.dataPoke.sort((a, b) => {
                 return a.idpoke - b.idpoke;
               });
-              //console.log(sortedDescPoints);
             },
               error => {
               console.log(error);
@@ -75,6 +84,7 @@ export class PokemonComponent implements OnInit {
   }
 
   loadmore(): void {
+    this.geturl = this.nexturl;
     this.page = this.page + 21;
     this.getAllpkemon();
   }
