@@ -6,15 +6,15 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { ContentComponent } from './content/content.component';
 import { PokemonComponent } from './pokemon/pokemon.component';
-import { GetPhoto} from './tools/pokephoto.pipe';
 import { FilterPipe} from '../../config/filter.pipe';
+import { PaginationComponent} from './tools/pagination.component';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule
   ],
-  declarations: [HeaderComponent, ContentComponent, FooterComponent, PokemonComponent, FilterPipe, GetPhoto],
+  declarations: [HeaderComponent, ContentComponent, FooterComponent, PokemonComponent, FilterPipe, PaginationComponent],
   exports: [ContentComponent]
 })
 export class ViewModule { }

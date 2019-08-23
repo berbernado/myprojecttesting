@@ -17,7 +17,9 @@
     "jquery": "3.4.1",
     "popper.js": "1.15.0",
     "rxjs": "6.5.2",
-    "rxjs-compat": "^6.5.2",
+    "rxjs-compat": "6.5.2",
+    "typography": "^0.16.19",
+    "vars": "0.1.1",
     "zone.js": "0.9.1"
   },
   "scripts": {

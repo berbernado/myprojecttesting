@@ -15,11 +15,11 @@
     </div>
   </div>
   <div class="row mt-3">
-    <div class="col-sm-6 col-md-4" *ngFor="let i of arrPoke | filter : searchText;let j = index;">
+    <div class="col-sm-3 cardlist" *ngFor="let i of listpoke | filter : searchText;let j = index;">
       <div class="card">
           <div class="card-body text-center">
             <p>
-              <img [src]="j+1 | GetPhoto" alt="card image">
+               <img src="{{i.photo}}" alt="card image" width="200px">
             </p>
             <h4 class="card-title">{{i.name}}</h4>
             <p class="card-text">This is basic card with image on top, title, description and button.</p>
@@ -27,5 +27,10 @@
             </div>
         </div>
     </div>
+  </div>
+  <div class="pagination">
+    
+   <button (click)="onPrev()" [disabled]="page === 1">Previous</button>
+    <button (click)="onNext()" [disabled]="lastPage()">Next</button>
   </div>
 </div>

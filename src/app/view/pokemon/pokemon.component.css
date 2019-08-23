@@ -13,3 +13,10 @@
   position: relative;
   color: rgb(97, 96, 96);
 }
+
+.cardlist{
+  margin-bottom: 20px;
+}
+
+.pagination {
+}
