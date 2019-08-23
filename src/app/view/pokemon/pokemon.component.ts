@@ -46,23 +46,27 @@ export class PokemonComponent implements OnInit {
 
   getPokeImages(){ 
     let id = this.page;
-    /*if (this.page>0){
-      this.listpoke.length = 0;
-    }*/
     for (const result of this.arrPoke) {
-      this.httpService.get<any>(UrlCollection.FORMPOKEMON + id + '/').subscribe(
-        data => {
-          this.listpoke.push({idpoke: id,
-             name: data.name,
-              photo: data.sprites.front_default
+      this.httpService.get<any>(UrlCollection.LISTPOKEMON + id + '/').subscribe(
+        detilpoke => {
+          this.httpService.get<any>(UrlCollection.FORMPOKEMON + detilpoke.id + '/').subscribe(
+            data => {
+              this.listpoke.push({idpoke: detilpoke.id,
+                name: detilpoke.name,
+                typepoke: detilpoke.types,
+                photo: data.sprites.front_default,
               });
+            },
+              error => {
+              console.log(error);
+            });
         },
           error => {
           console.log(error);
         });
+      
         id = id + 1;
     }
-    
   }
 
   loadmore(): void {

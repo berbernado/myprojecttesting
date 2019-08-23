@@ -31,7 +31,12 @@
             </p>
             <h4 class="card-title">{{i.name}}</h4>
             <p class="card-text text-muted"># {{j + 1}}</p>
-            <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
+            <div *ngFor="let x of i.typepoke">
+              <a href="#" class="btn btn-primary btn-sm" >
+                {{x.type.name}}
+              </a>
+            </div>
+           
             </div>
         </div>
     </div>
