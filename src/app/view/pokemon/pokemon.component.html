@@ -3,7 +3,15 @@
     <img style="margin:auto;width:100%;" src="https://cdn140.picsart.com/259325004017202.gif" />
   </div>
 </div>
-<div class="container">
+<div class="container mb-4">
+  <div class="row mt-3">
+    <div class="col-sm-6 headertitle">
+      <h2>Pokemon List</h2>
+    </div>
+    <div class="col-sm-6 headertitle" style="text-align: right">
+      <h2># {{total}}</h2>
+    </div>
+  </div>
   <div class="row mt-3">
     <div class="input-group col-md-12">
       <input class="form-control py-2" [(ngModel)]="searchText" placeholder="Search">
@@ -22,15 +30,15 @@
                <img src="{{i.photo}}" alt="card image" width="200px">
             </p>
             <h4 class="card-title">{{i.name}}</h4>
-            <p class="card-text">This is basic card with image on top, title, description and button.</p>
+            <p class="card-text text-muted"># {{j + 1}}</p>
             <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
             </div>
         </div>
     </div>
   </div>
-  <div class="pagination">
-    
-   <button (click)="onPrev()" [disabled]="page === 1">Previous</button>
-    <button (click)="onNext()" [disabled]="lastPage()">Next</button>
+  <div class="row mt-3">
+    <div class="btnloadmore col-md-2">
+        <button (click)="loadmore()"  *ngIf="!(page > total)" class="btn btn-pill btn-block btn-info">Load More</button>
+    </div>
   </div>
 </div>
